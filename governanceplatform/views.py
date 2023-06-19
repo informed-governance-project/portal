@@ -12,16 +12,8 @@ from .decorators import operateur_required, regulator_required
 def index(request):
     if not request.user.is_verified():
         return redirect("two_factor:profile")
-
-    otp_required(index)
-
-    user = request.user
-    if user.is_authenticated:
-        if user.is_regulator:
-            return regulator_index(request)
-
-        return operateur_index(request)
-
+    else:
+        return redirect("two_factor:profile")
 
 def logout_view(request):
     logout(request)
@@ -36,11 +28,3 @@ def privacy(request):
     return render(request, "home/privacy_policy.html", context={"site_name": SITE_NAME})
 
 
-@operateur_required
-def operateur_index(request):
-    return render(request, "operateur/index.html", context={"site_name": SITE_NAME})
-
-
-@regulator_required
-def regulator_index(request):
-    return render(request, "regulator/index.html", context={"site_name": SITE_NAME})
