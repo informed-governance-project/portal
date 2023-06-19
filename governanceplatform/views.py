@@ -1,11 +1,9 @@
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
-from django_otp.decorators import otp_required
 
 from governanceplatform.settings import SITE_NAME
 
-from .decorators import operateur_required, regulator_required
 
 
 @login_required
