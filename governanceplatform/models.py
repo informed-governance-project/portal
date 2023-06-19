@@ -93,8 +93,6 @@ class User(AbstractUser):
         help_text=_("Designates whether the user can log into this admin site."),
     )
     phone_number = models.CharField(max_length=30, blank=True, default=None)
-    companies = models.ManyToManyField(Company)
-    sectors = models.ManyToManyField(Sector, through="SectorAdministration")
     email = models.EmailField(
         verbose_name=_("email address"),
         unique=True,
@@ -106,23 +104,3 @@ class User(AbstractUser):
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["first_name", "last_name"]
 
-    @admin.display(description="sectors")
-    def get_sectors(self):
-        return [sector.name for sector in self.sectors.all()]
-
-    @admin.display(description="companies")
-    def get_companies(self):
-        return [company.name for company in self.companies.all()]
-
-
-# link between the users and the sector
-class SectorAdministration(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    sector = models.ForeignKey(Sector, on_delete=models.CASCADE)
-    is_sector_administrator = models.BooleanField(
-        default=False, verbose_name=_("Administrator")
-    )
-
-    class Meta:
-        verbose_name = _("Sector administration")
-        verbose_name_plural = _("Sectors administration")
