@@ -8,7 +8,7 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
     dependencies = [
-        ("governanceplatform", "0001_initial"),
+        ("proxy", "0001_initial"),
     ]
 
     operations = [
@@ -28,7 +28,7 @@ class Migration(migrations.Migration):
                     "sector",
                     models.ForeignKey(
                         on_delete=django.db.models.deletion.CASCADE,
-                        to="governanceplatform.sector",
+                        to="proxy.sector",
                     ),
                 ),
             ],
@@ -64,13 +64,13 @@ class Migration(migrations.Migration):
                         null=True,
                         on_delete=django.db.models.deletion.CASCADE,
                         related_name="translations",
-                        to="governanceplatform.services",
+                        to="proxy.services",
                     ),
                 ),
             ],
             options={
                 "verbose_name": "Service Translation",
-                "db_table": "governanceplatform_services_translation",
+                "db_table": "proxy_services_translation",
                 "db_tablespace": "",
                 "managed": True,
                 "default_permissions": (),

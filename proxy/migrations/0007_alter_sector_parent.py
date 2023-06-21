@@ -6,7 +6,7 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
     dependencies = [
-        ("governanceplatform", "0006_alter_sectoradministration_options"),
+        ("proxy", "0006_alter_sectoradministration_options"),
     ]
 
     operations = [
@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
                 default=None,
                 null=True,
                 on_delete=django.db.models.deletion.CASCADE,
-                to="governanceplatform.sector",
+                to="proxy.sector",
             ),
         ),
     ]

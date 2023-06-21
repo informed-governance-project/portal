@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("governanceplatform", "0008_alter_user_phone_number"),
+        ("proxy", "0008_alter_user_phone_number"),
     ]
 
     operations = [

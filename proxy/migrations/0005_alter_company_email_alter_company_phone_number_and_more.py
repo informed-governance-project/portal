@@ -6,7 +6,7 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
     dependencies = [
-        ("governanceplatform", "0004_remove_company_is_operateur"),
+        ("proxy", "0004_remove_company_is_operateur"),
     ]
 
     operations = [
@@ -27,7 +27,7 @@ class Migration(migrations.Migration):
                 default=None,
                 null=True,
                 on_delete=django.db.models.deletion.CASCADE,
-                to="governanceplatform.sector",
+                to="proxy.sector",
             ),
         ),
         migrations.AlterField(

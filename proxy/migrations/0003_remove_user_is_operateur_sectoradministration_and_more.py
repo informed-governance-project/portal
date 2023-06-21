@@ -7,7 +7,7 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
     dependencies = [
-        ("governanceplatform", "0002_services_servicestranslation"),
+        ("proxy", "0002_services_servicestranslation"),
     ]
 
     operations = [
@@ -32,7 +32,7 @@ class Migration(migrations.Migration):
                     "sector",
                     models.ForeignKey(
                         on_delete=django.db.models.deletion.CASCADE,
-                        to="governanceplatform.sector",
+                        to="proxy.sector",
                     ),
                 ),
                 (
@@ -52,8 +52,8 @@ class Migration(migrations.Migration):
             model_name="user",
             name="sectors",
             field=models.ManyToManyField(
-                through="governanceplatform.SectorAdministration",
-                to="governanceplatform.sector",
+                through="proxy.SectorAdministration",
+                to="proxy.sector",
             ),
         ),
     ]

@@ -7,7 +7,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("governanceplatform", "0009_alter_user_email"),
+        ("proxy", "0009_alter_user_email"),
     ]
 
     operations = [
@@ -71,7 +71,7 @@ class Migration(migrations.Migration):
                 default=None,
                 null=True,
                 on_delete=django.db.models.deletion.CASCADE,
-                to="governanceplatform.sector",
+                to="proxy.sector",
                 verbose_name="parent",
             ),
         ),

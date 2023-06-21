@@ -6,7 +6,7 @@ from django.db import migrations
 class Migration(migrations.Migration):
     dependencies = [
         (
-            "governanceplatform",
+            "proxy",
             "0005_alter_company_email_alter_company_phone_number_and_more",
         ),
     ]

@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("governanceplatform", "0011_remove_user_username"),
+        ("proxy", "0011_remove_user_username"),
     ]
 
     operations = [

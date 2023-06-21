@@ -1,13 +1,15 @@
 [tool.poetry]
-name = "governanceplatform"
+name = "proxy"
 version = "0.1.0"
 description = ""
-authors = ["Your Name <you@example.com>"]
+authors = [
+    "NC3 Team <info@nc3.lu>",
+]
 license = "AGPL-3.0-or-later"
 readme = "README.md"
 
-homepage = "https://github.com/informed-governance-project/governance-platform"
-repository = "https://github.com/informed-governance-project/governance-platform"
+homepage = "https://github.com/informed-governance-project/proxy"
+repository = "https://github.com/informed-governance-project/proxy"
 
 [tool.poetry.dependencies]
 python = "^3.10"

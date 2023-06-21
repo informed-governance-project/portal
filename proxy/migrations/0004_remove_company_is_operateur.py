@@ -6,7 +6,7 @@ from django.db import migrations
 class Migration(migrations.Migration):
     dependencies = [
         (
-            "governanceplatform",
+            "proxy",
             "0003_remove_user_is_operateur_sectoradministration_and_more",
         ),
     ]

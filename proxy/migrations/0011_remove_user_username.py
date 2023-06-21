@@ -7,7 +7,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         (
-            "governanceplatform",
+            "proxy",
             "0010_alter_company_address_alter_company_country_and_more",
         ),
     ]

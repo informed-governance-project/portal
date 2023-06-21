@@ -17,39 +17,39 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-#: governanceplatform/admin.py:15
+#: proxy/admin.py:15
 msgid "Administration"
 msgstr ""
 
-#: governanceplatform/admin.py:120 governanceplatform/admin.py:203
+#: proxy/admin.py:120 proxy/admin.py:203
 msgid "Contact Information"
 msgstr ""
 
-#: governanceplatform/admin.py:131 governanceplatform/admin.py:214
+#: proxy/admin.py:131 proxy/admin.py:214
 msgid "Configuration Information"
 msgstr ""
 
-#: governanceplatform/models.py:17
+#: proxy/models.py:17
 msgid "Sector"
 msgstr ""
 
-#: governanceplatform/models.py:18
+#: proxy/models.py:18
 msgid "Sectors"
 msgstr ""
 
-#: governanceplatform/models.py:29
+#: proxy/models.py:29
 msgid "Service"
 msgstr ""
 
-#: governanceplatform/models.py:30
+#: proxy/models.py:30
 msgid "Services"
 msgstr ""
 
-#: governanceplatform/models.py:56
+#: proxy/models.py:56
 msgid "Company"
 msgstr ""
 
-#: governanceplatform/models.py:57
+#: proxy/models.py:57
 msgid "Companies"
 msgstr ""
 

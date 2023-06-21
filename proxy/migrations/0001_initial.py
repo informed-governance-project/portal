@@ -51,7 +51,7 @@ class Migration(migrations.Migration):
                     models.ForeignKey(
                         null=True,
                         on_delete=django.db.models.deletion.CASCADE,
-                        to="governanceplatform.sector",
+                        to="proxy.sector",
                     ),
                 ),
             ],
@@ -85,7 +85,7 @@ class Migration(migrations.Migration):
                     models.CharField(blank=True, max_length=30, null=True),
                 ),
                 ("monarc_path", models.CharField(max_length=200)),
-                ("sectors", models.ManyToManyField(to="governanceplatform.sector")),
+                ("sectors", models.ManyToManyField(to="proxy.sector")),
             ],
             options={
                 "verbose_name": "Company",
@@ -178,7 +178,7 @@ class Migration(migrations.Migration):
                 ("is_regulator", models.BooleanField(default=False)),
                 ("is_administrator", models.BooleanField(default=False)),
                 ("phone_number", models.CharField(max_length=30)),
-                ("companies", models.ManyToManyField(to="governanceplatform.company")),
+                ("companies", models.ManyToManyField(to="proxy.company")),
                 (
                     "groups",
                     models.ManyToManyField(
@@ -190,7 +190,7 @@ class Migration(migrations.Migration):
                         verbose_name="groups",
                     ),
                 ),
-                ("sectors", models.ManyToManyField(to="governanceplatform.sector")),
+                ("sectors", models.ManyToManyField(to="proxy.sector")),
                 (
                     "user_permissions",
                     models.ManyToManyField(
@@ -238,13 +238,13 @@ class Migration(migrations.Migration):
                         null=True,
                         on_delete=django.db.models.deletion.CASCADE,
                         related_name="translations",
-                        to="governanceplatform.sector",
+                        to="proxy.sector",
                     ),
                 ),
             ],
             options={
                 "verbose_name": "Sector Translation",
-                "db_table": "governanceplatform_sector_translation",
+                "db_table": "proxy_sector_translation",
                 "db_tablespace": "",
                 "managed": True,
                 "default_permissions": (),
