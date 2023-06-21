@@ -1,4 +1,3 @@
-from django import forms
 from django.contrib import admin
 from django.contrib.auth.models import Permission
 from django.utils.translation import gettext_lazy as _
@@ -122,7 +121,7 @@ class UserAdmin(ImportExportModelAdmin, admin.ModelAdmin):
 
     def save_model(self, request, obj, form, change):
         if not request.user.is_superuser:
-            super().save_model(request, obj, form, change)            
+            super().save_model(request, obj, form, change)
         else:
             if obj.id is None and obj.is_staff:
                 super().save_model(request, obj, form, change)
