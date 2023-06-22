@@ -10,16 +10,16 @@ class ExternalToken(models.Model):
     module_name = models.CharField(max_length=255)
 
 
-# define an abstract class which make  the difference between operator and regulator
+# define an abstract class which make the difference between operator and regulator
 class User(AbstractUser):
-    username = None
+    # username = None
     is_regulator = models.BooleanField(default=False, verbose_name=_("Regulator"))
     is_staff = models.BooleanField(
         verbose_name=_("Administrator"),
         default=False,
         help_text=_("Designates whether the user can log into this admin site."),
     )
-    phone_number = models.CharField(max_length=30, blank=True, default=None)
+    phone_number = models.CharField(max_length=30, blank=True, default=None, null=True)
     email = models.EmailField(
         verbose_name=_("email address"),
         unique=True,
@@ -28,5 +28,5 @@ class User(AbstractUser):
         },
     )
 
-    USERNAME_FIELD = "email"
+    # USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["first_name", "last_name"]
