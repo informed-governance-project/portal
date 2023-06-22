@@ -3,13 +3,6 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 
-# define a token class for SSO on other application/module
-class ExternalToken(models.Model):
-    token = models.CharField(max_length=255)
-    module_path = models.CharField(max_length=255)
-    module_name = models.CharField(max_length=255)
-
-
 # define an abstract class which make the difference between operator and regulator
 class User(AbstractUser):
     # username = None
@@ -30,3 +23,12 @@ class User(AbstractUser):
 
     # USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["first_name", "last_name"]
+
+
+# define a token class for SSO on other application/module
+class ExternalToken(models.Model):
+    token = models.CharField(max_length=255)
+    module_path = models.CharField(max_length=255)
+    module_name = models.CharField(max_length=255)
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE)

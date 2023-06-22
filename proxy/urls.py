@@ -14,7 +14,6 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib.auth.decorators import login_required
 from django.urls import include, path, re_path
 from django.views.i18n import set_language
 from revproxy.views import ProxyView
@@ -24,7 +23,7 @@ from two_factor.views import LoginView
 from proxy import views
 from proxy.admin import admin_site
 from proxy.decorators import operateur_required
-from proxy.settings import DEBUG, REGULATOR_CONTACT, SITE_NAME
+from proxy.settings import CLIENT_REDIRECTIONS, DEBUG, REGULATOR_CONTACT, SITE_NAME
 from proxyapp.views import DefaultProxyView
 
 urlpatterns = [
@@ -55,24 +54,22 @@ urlpatterns = [
     # Proxy views
     #
     re_path(
-        r"^monarc/(?P<path>.*)$",
-        operateur_required(DefaultProxyView.as_view(), login_url="/account/login"),
-    ),
-    # re_path(
-    #     r"^monarc/(?P<path>.*)$", ProxyView.as_view(upstream="http://127.0.0.1:5001/")
-    # ),
-    re_path(
-        r"^bo/(?P<path>.*)$",
-        login_required(
-            ProxyView.as_view(upstream="http://127.0.0.1:5000/"),
-            login_url="/account/login",
-        ),
-    ),
-    re_path(
         r"^notifications/(?P<path>.*)$",
         ProxyView.as_view(upstream="http://127.0.0.1:5002/"),
     ),
 ]
+
+# Proxy views as defined in CLIENT_REDIRECTIONS
+for client in CLIENT_REDIRECTIONS:
+    urlpatterns.append(
+        re_path(
+            client[0],
+            operateur_required(
+                DefaultProxyView.as_view(upstream=client[1]),
+                login_url="/account/login",
+            ),
+        ),
+    )
 
 if DEBUG:
     urlpatterns.append(path("__debug__/", include("debug_toolbar.urls")))

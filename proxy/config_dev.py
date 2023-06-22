@@ -16,6 +16,11 @@ REGULATOR_CONTACT = {
     "contact_url": None,  # "https://www.example.org/contact_us"
 }
 
+CLIENT_REDIRECTIONS = [
+    (r"^bo/(?P<path>.*)$", "http://127.0.0.1:5005/"),
+    (r"^monarc/(?P<path>.*)$", "http://127.0.0.1:5000/"),
+]
+
 # The generic site/tool name. Used to load specific config, templates, styles, logo.
 SITE_NAME = "proxy"
 

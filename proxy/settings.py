@@ -21,6 +21,7 @@ except ImportError:  # pragma: no cover
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
+
 try:
     # SECURITY WARNING: keep the secret key used in production secret!
     SECRET_KEY = config.SECRET_KEY
@@ -42,6 +43,8 @@ try:
 
     EMAIL_HOST = config.EMAIL_HOST
     EMAIL_PORT = config.EMAIL_PORT
+
+    CLIENT_REDIRECTIONS = config.CLIENT_REDIRECTIONS
 except AttributeError as e:
     print("Please check you configuration file for the missing configuration variable:")
     print(f"  {e}")
