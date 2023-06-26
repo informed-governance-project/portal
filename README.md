@@ -50,6 +50,30 @@ $ python manage.py revoke_access --username=john --module_name=monarc
 Access revoked.
 ```
 
+### API
+
+It is possible to create new accesses via the API
+
+'''bash
+curl -X 'POST' \
+  'http://127.0.0.1:8000/api/v1/externaltoken/' \
+  -H 'accept: application/json' \
+  -H 'Authorization: Basic dG90bzpwYXNzd29yZA==' \
+  -H 'Content-Type: application/json' \
+  -H 'X-CSRFTOKEN: xj4Rk9PNbcavn5Sy3qSgnX2RzqepddKaxO3xyxyaKTxPueEuJ7QihevwJJjF2swa' \
+  -d '{
+  "username": "john",
+  "module_name": "MONARC",
+  "module_path": "monarc",
+  "token": "SecureToken"
+}'
+'''
+
+The user ``john`` must already be in the database.
+
+You can look at the documentation of the API:
+http://127.0.0.1:8000/api/v1/swagger-ui/
+
 
 
 ## License
