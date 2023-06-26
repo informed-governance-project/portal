@@ -4,7 +4,7 @@ from proxy.models import ExternalToken
 
 
 class Command(BaseCommand):
-    help = """Revoke a user's access to a specified service.
+    help = """List the different accesses.
     Usage: ``python manage.py revoke_access --help``"""
 
     def add_arguments(self, parser):
