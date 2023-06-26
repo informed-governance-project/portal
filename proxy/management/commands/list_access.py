@@ -12,7 +12,6 @@ class Command(BaseCommand):
         parser.add_argument("--module_name", type=str)
 
     def handle(self, *args, **options):
-
         accesses = ExternalToken.objects.all().order_by("user__username")
 
         print("Username" + " " * 15 + "Module name")

@@ -17,7 +17,6 @@ django = "^4.2"
 psycopg2-binary = "^2.8.4"
 cryptography = "^39.0.1"
 django-cors-headers = "^3.14.0"
-drf-spectacular = "^0.26.1"
 drf-spectacular-sidecar = "^2023.4.1"
 django-bootstrap5 = "^23.1"
 django-otp = "^1.1.6"
@@ -28,6 +27,8 @@ django-revproxy = {url = "https://github.com/jazzband/django-revproxy/archive/re
 django-import-export = "^3.2.0"
 parler = "^1.0.1"
 django-parler = "^2.3"
+djangorestframework = "^3.14.0"
+drf-spectacular = "^0.26.3"
 
 
 [tool.poetry.group.dev.dependencies]

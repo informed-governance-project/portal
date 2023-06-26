@@ -50,6 +50,9 @@ urlpatterns = [
     path("privacy/", views.privacy, name="privacy"),
     # Language Selector
     path("set-language/", set_language, name="set_language"),
+    # API
+    path("api-auth/", include("rest_framework.urls")),
+    path("api/v1/", include("proxyapp.api.urls")),
     #
     # Proxy views
     #
