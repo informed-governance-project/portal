@@ -75,6 +75,17 @@ Only an admin user is able to use this endpoint.
 
 The user must already be in the database.
 
+Revoke a user's access:
+
+```bash
+curl -X 'DELETE' \
+  'http://127.0.0.1:8000/api/v1/externaltoken/5' \
+  -H 'accept: */*' \
+  -H 'Authorization: Basic dG90bzpwYXNzd29yZA==' \
+  -H 'X-CSRFTOKEN: GmsOTMfZ2UbyyWRP25uxYY1cSDmvB3zEGRru7aYmBBySF5DLIMszSfuR2WrLqilE'
+```
+
+
 You can look at the documentation of the API:
 http://127.0.0.1:8000/api/v1/swagger-ui/
 
