@@ -18,6 +18,7 @@ class DefaultProxyView(ProxyView):
             )
         except ExternalToken.DoesNotExist:
             # return the headers without the authentication token
+            # users should be blockes by the proxified module
             return headers
 
         headers["token"] = external_token.token
