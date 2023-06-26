@@ -11,7 +11,7 @@ class ExternalTokenInputSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ExternalToken
-        fields = ["username", "module_name", "module_path", "token"]
+        fields = ["id", "username", "module_name", "module_path", "token"]
 
 
 class ExternalTokenSerializer(serializers.ModelSerializer):

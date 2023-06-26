@@ -50,3 +50,17 @@ class ExternalTokenApiView(APIView):
         )
         serializer = ExternalTokenSerializer(new_external_token)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class ExternalTokenApiElemView(APIView):
+    # add permission to check if user is authenticated
+    authentication_classes = [SessionAuthentication, BasicAuthentication]
+    permission_classes = [IsAuthenticated, IsAdminUser]
+
+    def delete(self, request, id=None):
+        """
+        Revoke a user's access.
+        """
+        external_token = ExternalToken.objects.filter(id=id)
+        external_token.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
