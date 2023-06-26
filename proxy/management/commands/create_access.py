@@ -17,7 +17,7 @@ class Command(BaseCommand):
         try:
             user = User.objects.get(username=options["username"])
         except User.DoesNotExist:
-            print("Unknown user.")
+            return "Unknown user."
 
         ExternalToken.objects.create(
             token=options["token"],
@@ -26,4 +26,4 @@ class Command(BaseCommand):
             user=user,
         )
 
-        print("New access created.")
+        return "New access created."
