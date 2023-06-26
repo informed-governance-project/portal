@@ -54,7 +54,7 @@ Access revoked.
 
 It is possible to create new accesses via the API
 
-'''bash
+```bash
 curl -X 'POST' \
   'http://127.0.0.1:8000/api/v1/externaltoken/' \
   -H 'accept: application/json' \
@@ -67,7 +67,7 @@ curl -X 'POST' \
   "module_path": "monarc",
   "token": "SecureToken"
 }'
-'''
+```
 
 The user ``john`` must already be in the database.
 
