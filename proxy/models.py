@@ -21,8 +21,8 @@ class User(AbstractUser):
         },
     )
 
-    # USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ["first_name", "last_name"]
+    USERNAME_FIELD = "email"
+    REQUIRED_FIELDS = ["username", "first_name", "last_name"]
 
 
 # define a token class for SSO on other application/module
