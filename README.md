@@ -1,13 +1,23 @@
-# Governance platform
+# Governance platform - Portal
 
 ## Description
 
-Portal for the Informed Governance project.
+Portal for the
+[Informed Governance project](https://github.com/informed-governance-project).
+
 See more information about the architecture
 [here](https://github.com/informed-governance-project/architecture#overview).
 
 
 ## Installation
+
+### Prerequisites
+
+Generally speaking, requirements are the following:
+- A GNU/Linux distribution. Tested on Debian Bookworm;
+- Python version >= 3.9. Tested with Python 3.11;
+- A PostgreSQL server for persistent storage. Tested with PostgreSQL 15.3.
+
 
 ### Get the code and install the dependencies
 
