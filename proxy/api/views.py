@@ -5,7 +5,7 @@ from rest_framework.permissions import IsAdminUser, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from proxy.models import ExternalToken, User
+from portal.models import ExternalToken, User
 
 from .serializers import ExternalTokenInputSerializer, ExternalTokenSerializer
 

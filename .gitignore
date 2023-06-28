@@ -18,8 +18,8 @@ docker/postgres/data/*
 
 logs/
 
-proxy/config_prod.py
-proxy/config.py
-proxy/static/
+portal/config_prod.py
+portal/config.py
+portal/static/
 
 static/npm_components

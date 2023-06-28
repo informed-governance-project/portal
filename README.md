@@ -22,8 +22,8 @@ Generally speaking, requirements are the following:
 ### Get the code and install the dependencies
 
 ```bash
-$ git clone https://github.com/informed-governance-project/proxy.git
-$ cd proxy
+$ git clone https://github.com/informed-governance-project/portal.git
+$ cd portal
 $ npm ci
 $ poetry install --only main
 ```
@@ -34,7 +34,7 @@ $ poetry install --only main
 $ poetry shell
 
 # Configure production settings:
-$ cp proxy/config_dev.py proxy/config.py
+$ cp portal/config_dev.py portal/config.py
 
 $ python manage.py collectstatic
 

@@ -22,7 +22,7 @@ CLIENT_REDIRECTIONS = [
 ]
 
 # The generic site/tool name. Used to load specific config, templates, styles, logo.
-SITE_NAME = "proxy"
+SITE_NAME = "portal"
 
 SECRET_KEY = "django-insecure-1*nt5exfgm+po13ngrz7fm5sitfvi24f!13t=z*l5zz*w9zic$"
 

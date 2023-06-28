@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from proxy.models import ExternalToken
+from portal.models import ExternalToken
 
 
 class ExternalTokenInputSerializer(serializers.ModelSerializer):

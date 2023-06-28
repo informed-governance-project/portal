@@ -6,8 +6,8 @@ from django_otp.decorators import otp_required
 from import_export import fields, resources
 from import_export.admin import ImportExportModelAdmin
 
-from proxy.models import User
-from proxy.settings import SITE_NAME
+from portal.models import User
+from portal.settings import SITE_NAME
 
 
 # Customize the admin site
@@ -106,9 +106,9 @@ class UserAdmin(ImportExportModelAdmin, admin.ModelAdmin):
 
         # if request.user.has_perms(
         #     [
-        #         "proxy.add_user",
-        #         "proxy.change_user",
-        #         "proxy.delete_user",
+        #         "portal.add_user",
+        #         "portal.change_user",
+        #         "portal.delete_user",
         #     ],
         # ):
         #     return queryset.filter(

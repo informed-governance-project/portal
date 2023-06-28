@@ -1,26 +1,25 @@
-from django.contrib.auth import logout
-from django.contrib.auth.decorators import login_required
-from django.shortcuts import redirect, render
+from revproxy.views import ProxyView
 
-from proxy.settings import SITE_NAME
+from portal.models import ExternalToken
 
 
-@login_required
-def index(request):
-    if not request.user.is_verified():
-        return redirect("two_factor:profile")
-    else:
-        return redirect("two_factor:profile")
+class DefaultProxyView(ProxyView):
+    # upstream = "http://127.0.0.1:5000/"
 
+    def get_proxy_request_headers(self, request):
+        # print(self.upstream)
+        # print(request.user)
+        headers = super().get_proxy_request_headers(request)
 
-def logout_view(request):
-    logout(request)
-    return redirect("login")
+        module_path = request.path.strip("/")
+        try:
+            external_token = ExternalToken.objects.get(
+                user=request.user, module_path=module_path
+            )
+        except ExternalToken.DoesNotExist:
+            # return the headers without the authentication token
+            # users should be blockes by the proxified module
+            return headers
 
-
-def terms(request):
-    return render(request, "home/terms.html", context={"site_name": SITE_NAME})
-
-
-def privacy(request):
-    return render(request, "home/privacy_policy.html", context={"site_name": SITE_NAME})
+        headers["token"] = external_token.token
+        return headers

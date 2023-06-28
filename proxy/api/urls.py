@@ -8,13 +8,13 @@ from drf_spectacular.views import (
 from .views import ExternalTokenApiElemView, ExternalTokenApiView
 
 urlpatterns = [
-    path("schema/", SpectacularAPIView.as_view(), name="proxy"),
+    path("schema/", SpectacularAPIView.as_view(), name="portal"),
     path(
         "swagger-ui/",
-        SpectacularSwaggerView.as_view(url_name="proxy"),
+        SpectacularSwaggerView.as_view(url_name="portal"),
         name="swagger-ui",
     ),
-    path("redoc/", SpectacularRedocView.as_view(url_name="proxy"), name="redoc"),
+    path("redoc/", SpectacularRedocView.as_view(url_name="portal"), name="redoc"),
     path("externaltoken/", ExternalTokenApiView.as_view()),
     path("externaltoken/<id>", ExternalTokenApiElemView.as_view()),
 ]

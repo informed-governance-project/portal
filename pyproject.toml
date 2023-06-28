@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "proxy"
+name = "portal"
 version = "0.1.0"
 description = ""
 authors = [
@@ -8,8 +8,8 @@ authors = [
 license = "AGPL-3.0-or-later"
 readme = "README.md"
 
-homepage = "https://github.com/informed-governance-project/proxy"
-repository = "https://github.com/informed-governance-project/proxy"
+homepage = "https://github.com/informed-governance-project/portal"
+repository = "https://github.com/informed-governance-project/portal"
 
 [tool.poetry.dependencies]
 python = "^3.10"

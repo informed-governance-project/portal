@@ -17,39 +17,39 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-#: proxy/admin.py:15
+#: portal/admin.py:15
 msgid "Administration"
 msgstr ""
 
-#: proxy/admin.py:120 proxy/admin.py:203
+#: portal/admin.py:120 portal/admin.py:203
 msgid "Contact Information"
 msgstr ""
 
-#: proxy/admin.py:131 proxy/admin.py:214
+#: portal/admin.py:131 portal/admin.py:214
 msgid "Configuration Information"
 msgstr ""
 
-#: proxy/models.py:17
+#: portal/models.py:17
 msgid "Sector"
 msgstr ""
 
-#: proxy/models.py:18
+#: portal/models.py:18
 msgid "Sectors"
 msgstr ""
 
-#: proxy/models.py:29
+#: portal/models.py:29
 msgid "Service"
 msgstr ""
 
-#: proxy/models.py:30
+#: portal/models.py:30
 msgid "Services"
 msgstr ""
 
-#: proxy/models.py:56
+#: portal/models.py:56
 msgid "Company"
 msgstr ""
 
-#: proxy/models.py:57
+#: portal/models.py:57
 msgid "Companies"
 msgstr ""
 

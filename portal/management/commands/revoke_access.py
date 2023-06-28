@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand
 
-from proxy.models import ExternalToken, User
+from portal.models import ExternalToken, User
 
 
 class Command(BaseCommand):

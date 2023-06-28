@@ -1,5 +1,5 @@
 """
-URL configuration for proxy project.
+URL configuration for portal project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.2/topics/http/urls/
@@ -20,11 +20,11 @@ from revproxy.views import ProxyView
 from two_factor.urls import urlpatterns as tf_urls
 from two_factor.views import LoginView
 
-from proxy import views
-from proxy.admin import admin_site
-from proxy.decorators import operateur_required
-from proxy.settings import CLIENT_REDIRECTIONS, DEBUG, REGULATOR_CONTACT, SITE_NAME
-from proxyapp.views import DefaultProxyView
+from portal import views
+from portal.admin import admin_site
+from portal.decorators import operateur_required
+from portal.settings import CLIENT_REDIRECTIONS, DEBUG, REGULATOR_CONTACT, SITE_NAME
+from proxy.views import DefaultProxyView
 
 urlpatterns = [
     # Root
@@ -52,7 +52,7 @@ urlpatterns = [
     path("set-language/", set_language, name="set_language"),
     # API
     path("api-auth/", include("rest_framework.urls")),
-    path("api/v1/", include("proxyapp.api.urls")),
+    path("api/v1/", include("proxy.api.urls")),
     #
     # Proxy views
     #
