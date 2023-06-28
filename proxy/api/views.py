@@ -8,7 +8,12 @@ from rest_framework.views import APIView
 
 from portal.models import ExternalToken, User
 
-from .serializers import ExternalTokenInputSerializer, ExternalTokenSerializer
+from .serializers import (
+    ExternalTokenInputSerializer,
+    ExternalTokenSerializer,
+    UserInputSerializer,
+    UserSerializer,
+)
 
 #
 # Model: ExternalToken
@@ -66,3 +71,40 @@ class ExternalTokenApiElemView(GenericAPIView):
         external_token = ExternalToken.objects.filter(id=id)
         external_token.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+#
+# Model: User
+#
+
+
+class UserApiView(APIView):
+    # add permission to check if user is authenticated
+    authentication_classes = [SessionAuthentication, BasicAuthentication]
+    permission_classes = [IsAuthenticated, IsAdminUser]
+
+    # List all
+    @extend_schema(request=None, responses=UserSerializer)
+    def get(self, request, *args, **kwargs):
+        """
+        List all the items.
+        """
+        objects = User.objects.all()
+        serializer = UserSerializer(objects, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    # Create a new object
+    @extend_schema(request=UserInputSerializer, responses=UserSerializer)
+    def post(self, request, *args, **kwargs):
+        """
+        Create a new user.
+        """
+        new_user = User.objects.create(
+            username=request.data["username"],
+            email=request.data["email"],
+            is_regulator=request.data["is_regulator"],
+            is_staff=request.data["is_staff"],
+            password=request.data["password"],
+        )
+        serializer = UserSerializer(new_user)
+        return Response(serializer.data, status=status.HTTP_200_OK)

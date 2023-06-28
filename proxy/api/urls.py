@@ -5,7 +5,7 @@ from drf_spectacular.views import (
     SpectacularSwaggerView,
 )
 
-from .views import ExternalTokenApiElemView, ExternalTokenApiView
+from .views import ExternalTokenApiElemView, ExternalTokenApiView, UserApiView
 
 urlpatterns = [
     path("schema/", SpectacularAPIView.as_view(), name="portal"),
@@ -15,6 +15,7 @@ urlpatterns = [
         name="swagger-ui",
     ),
     path("redoc/", SpectacularRedocView.as_view(url_name="portal"), name="redoc"),
+    path("user/", UserApiView.as_view()),
     path("externaltoken/", ExternalTokenApiView.as_view()),
     path("externaltoken/<int:id>", ExternalTokenApiElemView.as_view()),
 ]
