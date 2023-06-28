@@ -16,5 +16,5 @@ urlpatterns = [
     ),
     path("redoc/", SpectacularRedocView.as_view(url_name="portal"), name="redoc"),
     path("externaltoken/", ExternalTokenApiView.as_view()),
-    path("externaltoken/<id>", ExternalTokenApiElemView.as_view()),
+    path("externaltoken/<int:id>", ExternalTokenApiElemView.as_view()),
 ]
