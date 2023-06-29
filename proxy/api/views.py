@@ -25,17 +25,15 @@ class ExternalTokenApiView(APIView):
     authentication_classes = [SessionAuthentication, BasicAuthentication]
     permission_classes = [IsAuthenticated, IsAdminUser]
 
-    # List all
     @extend_schema(request=None, responses=ExternalTokenSerializer)
     def get(self, request, *args, **kwargs):
         """
-        List all the items.
+        List all the external tokens.
         """
         objects = ExternalToken.objects.all()
         serializer = ExternalTokenSerializer(objects, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
-    # Create a new object
     @extend_schema(
         request=ExternalTokenInputSerializer, responses=ExternalTokenSerializer
     )
@@ -83,11 +81,10 @@ class UserApiView(APIView):
     authentication_classes = [SessionAuthentication, BasicAuthentication]
     permission_classes = [IsAuthenticated, IsAdminUser]
 
-    # List all
     @extend_schema(request=None, responses=UserSerializer)
     def get(self, request, *args, **kwargs):
         """
-        List all the items.
+        List all the users.
         """
         objects = User.objects.all()
         serializer = UserSerializer(objects, many=True)
