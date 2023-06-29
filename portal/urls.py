@@ -14,6 +14,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.contrib.auth.decorators import login_required
 from django.urls import include, path, re_path
 from django.views.i18n import set_language
 from revproxy.views import ProxyView
@@ -22,7 +23,8 @@ from two_factor.views import LoginView
 
 from portal import views
 from portal.admin import admin_site
-from portal.decorators import operateur_required
+
+# from portal.decorators import operateur_required, regulator_required
 from portal.settings import CLIENT_REDIRECTIONS, DEBUG, REGULATOR_CONTACT, SITE_NAME
 from proxy.views import DefaultProxyView
 
@@ -67,7 +69,7 @@ for client in CLIENT_REDIRECTIONS:
     urlpatterns.append(
         re_path(
             client[0],
-            operateur_required(
+            login_required(
                 DefaultProxyView.as_view(upstream=client[1]),
                 login_url="/account/login",
             ),

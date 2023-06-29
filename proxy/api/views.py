@@ -104,7 +104,8 @@ class UserApiView(APIView):
             email=request.data["email"],
             is_regulator=request.data["is_regulator"],
             is_staff=request.data["is_staff"],
-            password=request.data["password"],
         )
+        new_user.set_password(request.data["password"])
+        new_user.save()
         serializer = UserSerializer(new_user)
         return Response(serializer.data, status=status.HTTP_200_OK)
