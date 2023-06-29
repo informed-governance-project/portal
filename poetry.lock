@@ -575,13 +575,13 @@ url = "https://github.com/jazzband/django-revproxy/archive/refs/tags/0.11.0.tar.
 
 [[package]]
 name = "django-two-factor-auth"
-version = "1.15.2"
+version = "1.15.3"
 description = "Complete Two-Factor Authentication for Django"
 optional = false
 python-versions = "*"
 files = [
-    {file = "django-two-factor-auth-1.15.2.tar.gz", hash = "sha256:298a4a0471c31f953d600cb15359b715ca85ef2ac52c7ff75291b7e9193086ac"},
-    {file = "django_two_factor_auth-1.15.2-py3-none-any.whl", hash = "sha256:df66cabf8b9de9ecd4a20ab27a81fbd4bc54e4d12cad2943bfcad520f1cd7ed8"},
+    {file = "django-two-factor-auth-1.15.3.tar.gz", hash = "sha256:311b7f0c5ee47ae5c3734f7810f90c9390b3aef556f58a767b0d80d6b54013fb"},
+    {file = "django_two_factor_auth-1.15.3-py3-none-any.whl", hash = "sha256:a5752732225304ba0461ec6f5347def517bdde98685e90bb7879aa066c91f3a4"},
 ]
 
 [package.dependencies]
@@ -1642,13 +1642,13 @@ files = [
 
 [[package]]
 name = "typing-extensions"
-version = "4.6.3"
+version = "4.7.0"
 description = "Backported and Experimental Type Hints for Python 3.7+"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "typing_extensions-4.6.3-py3-none-any.whl", hash = "sha256:88a4153d8505aabbb4e13aacb7c486c2b4a33ca3b3f807914a9b4c844c471c26"},
-    {file = "typing_extensions-4.6.3.tar.gz", hash = "sha256:d91d5919357fe7f681a9f2b5b4cb2a5f1ef0a1e9f59c4d8ff0d3491e05c0ffd5"},
+    {file = "typing_extensions-4.7.0-py3-none-any.whl", hash = "sha256:5d8c9dac95c27d20df12fb1d97b9793ab8b2af8a3a525e68c80e21060c161771"},
+    {file = "typing_extensions-4.7.0.tar.gz", hash = "sha256:935ccf31549830cda708b42289d44b6f74084d616a00be651601a4f968e77c82"},
 ]
 
 [[package]]
