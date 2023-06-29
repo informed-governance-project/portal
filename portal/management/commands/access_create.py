@@ -5,7 +5,7 @@ from portal.models import ExternalToken, User
 
 class Command(BaseCommand):
     help = """Create a new access for a user to the specified service.
-    Usage: ``python manage.py create_access --help``"""
+    Usage: ``python manage.py access_create --help``"""
 
     def add_arguments(self, parser):
         parser.add_argument("--username", type=str)

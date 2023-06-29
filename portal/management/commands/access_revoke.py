@@ -5,7 +5,7 @@ from portal.models import ExternalToken, User
 
 class Command(BaseCommand):
     help = """Revoke a user's access to a specified service.
-    Usage: ``python manage.py revoke_access --help``"""
+    Usage: ``python manage.py access_revoke --help``"""
 
     def add_arguments(self, parser):
         parser.add_argument("--username", type=str)

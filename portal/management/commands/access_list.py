@@ -5,7 +5,7 @@ from portal.models import ExternalToken
 
 class Command(BaseCommand):
     help = """List the different accesses.
-    Usage: ``python manage.py revoke_access --help``"""
+    Usage: ``python manage.py access_list --help``"""
 
     def add_arguments(self, parser):
         parser.add_argument("--username", type=str)
