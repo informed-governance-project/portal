@@ -20,6 +20,8 @@ class User(AbstractUser):
             "unique": _("A user is already registered with this email address"),
         },
     )
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["username", "first_name", "last_name"]
@@ -30,5 +32,7 @@ class ExternalToken(models.Model):
     token = models.CharField(max_length=255)
     module_path = models.CharField(max_length=255)
     module_name = models.CharField(max_length=255)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
