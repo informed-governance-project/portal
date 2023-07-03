@@ -62,6 +62,19 @@ class ExternalTokenApiElemView(GenericAPIView):
     permission_classes = [IsAuthenticated, IsAdminUser]
     serializer_class = ExternalTokenSerializer
 
+    @extend_schema(
+        request=ExternalTokenInputSerializer, responses=ExternalTokenSerializer
+    )
+    def put(self, request, id=None):
+        """
+        Update an existing token.
+        """
+        external_token = ExternalToken.objects.get(id=id)
+        external_token.token = request.data["token"]
+        external_token.save()
+        serializer = ExternalTokenSerializer(external_token)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
     def delete(self, request, id=None):
         """
         Revoke a user's access.
