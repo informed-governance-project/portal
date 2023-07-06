@@ -14,7 +14,7 @@ class DefaultProxyView(ProxyView):
         module_path = request.path.strip("/")
         try:
             external_token = ExternalToken.objects.get(
-                user=request.user, module_path=module_path
+                user=request.user, module__path=module_path
             )
         except ExternalToken.DoesNotExist:
             # return the headers without the authentication token

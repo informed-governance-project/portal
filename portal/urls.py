@@ -23,9 +23,10 @@ from two_factor.views import LoginView
 
 from portal import views
 from portal.admin import admin_site
+from portal.models import Module
 
 # from portal.decorators import operateur_required, regulator_required
-from portal.settings import CLIENT_REDIRECTIONS, DEBUG, REGULATOR_CONTACT, SITE_NAME
+from portal.settings import DEBUG, REGULATOR_CONTACT, SITE_NAME
 from proxy.views import DefaultProxyView
 
 urlpatterns = [
@@ -64,13 +65,13 @@ urlpatterns = [
     ),
 ]
 
-# Proxy views as defined in CLIENT_REDIRECTIONS
-for client in CLIENT_REDIRECTIONS:
+# Proxy views
+for module in Module.objects.all():
     urlpatterns.append(
         re_path(
-            client[0],
+            rf"^{module.path}/(?P<path>.*)$",
             login_required(
-                DefaultProxyView.as_view(upstream=client[1]),
+                DefaultProxyView.as_view(upstream=module.upstream),
                 login_url="/account/login",
             ),
         ),
