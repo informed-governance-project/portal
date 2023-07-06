@@ -48,10 +48,13 @@ Two different interfaces are available. A command line interface and a Web based
 
 ### Command line interface
 
-Create a new access to a module for an authenticated user:
+Create a new module and a token access for an existing user:
 
 ```bash
-$ python manage.py access_create --username=john --module_name=monarc --module_path=monarc --token=SecureToken
+$ python manage.py module_create --name monarc --path monarc --upstream http://127.0.0.1:5000/
+New module created.
+
+$ python manage.py access_create --username=john --module_name=monarc --token=SecureToken
 New access created.
 ```
 

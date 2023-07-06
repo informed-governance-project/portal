@@ -5,8 +5,8 @@ from portal.models import ExternalToken, User
 
 class ExternalTokenInputSerializer(serializers.ModelSerializer):
     username = serializers.CharField(max_length=200)
-    module_name = serializers.CharField(max_length=200)
-    module_path = serializers.CharField(max_length=200)
+    # module_name = serializers.CharField(max_length=200)
+    # module_path = serializers.CharField(max_length=200)
     token = serializers.CharField(max_length=200)
 
     class Meta:
@@ -14,8 +14,8 @@ class ExternalTokenInputSerializer(serializers.ModelSerializer):
         fields = [
             "id",
             "username",
-            "module_name",
-            "module_path",
+            # "module_name",
+            # "module_path",
             "token",
         ]
 

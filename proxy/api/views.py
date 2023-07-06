@@ -48,8 +48,7 @@ class ExternalTokenApiView(APIView):
 
         new_external_token = ExternalToken.objects.create(
             user=user,
-            module_name=request.data["module_name"],
-            module_path=request.data["module_path"],
+            module__name=request.data["module_name"],
             token=request.data["token"],
         )
         serializer = ExternalTokenSerializer(new_external_token)

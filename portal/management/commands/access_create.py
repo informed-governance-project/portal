@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand
 
-from portal.models import ExternalToken, User
+from portal.models import ExternalToken, Module, User
 
 
 class Command(BaseCommand):
@@ -9,7 +9,6 @@ class Command(BaseCommand):
 
     def add_arguments(self, parser):
         parser.add_argument("--username", type=str)
-        parser.add_argument("--module_path", type=str)
         parser.add_argument("--module_name", type=str)
         parser.add_argument("--token", type=str)
 
@@ -19,10 +18,14 @@ class Command(BaseCommand):
         except User.DoesNotExist:
             return "Unknown user."
 
+        try:
+            module = Module.objects.get(name=options["module_name"])
+        except User.DoesNotExist:
+            return "Unknown user."
+
         ExternalToken.objects.create(
             token=options["token"],
-            module_name=options["module_path"],
-            module_path=options["module_name"],
+            module=module,
             user=user,
         )
 

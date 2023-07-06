@@ -17,4 +17,4 @@ class Command(BaseCommand):
         print("Username" + " " * 15 + "Module name")
         print("-" * 34)
         for access in accesses:
-            print("{} {} {}".format(access.user.username, " " * 15, access.module_name))
+            print("{} {} {}".format(access.user.username, " " * 15, access.module.name))

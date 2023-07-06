@@ -18,7 +18,7 @@ class Command(BaseCommand):
             return "Unknown user."
         try:
             token = ExternalToken.objects.get(
-                user=user, module_path=options["module_name"]
+                user=user, module__name=options["module_name"]
             )
             token.delete()
         except ExternalToken.DoesNotExist:

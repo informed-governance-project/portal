@@ -27,12 +27,23 @@ class User(AbstractUser):
     REQUIRED_FIELDS = ["username", "first_name", "last_name"]
 
 
-# define a token class for SSO on other application/module
+class Module(models.Model):
+    """Proxified module of the SERIMA platform."""
+
+    name = models.CharField(max_length=255, unique=True)
+    path = models.CharField(max_length=255, unique=True)
+    upstream = models.CharField(max_length=255, unique=True)
+    authentication_required = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+
 class ExternalToken(models.Model):
-    token = models.CharField(max_length=255)
-    module_path = models.CharField(max_length=255)
-    module_name = models.CharField(max_length=255)
+    """Token class for SSO to other application/module of the SERIMA platform."""
+
+    token = models.CharField(max_length=255, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    module = models.ForeignKey(Module, on_delete=models.CASCADE)
