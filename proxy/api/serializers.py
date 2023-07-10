@@ -1,12 +1,39 @@
 from rest_framework import serializers
 
-from portal.models import ExternalToken, User
+from portal.models import ExternalToken, Module, User
+
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ["id", "username", "is_staff", "is_regulator"]
+
+
+class ModuleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Module
+        fields = ["name", "path", "upstream", "authentication_required"]
+
+
+class ModuleInputSerializer(serializers.ModelSerializer):
+    name = serializers.CharField(max_length=200)
+    path = serializers.CharField(max_length=200)
+    upstream = serializers.CharField(max_length=200)
+    authentication_required = serializers.BooleanField(default=True)
+
+    class Meta:
+        model = Module
+        fields = [
+            "name",
+            "path",
+            "upstream",
+            "authentication_required",
+        ]
 
 
 class ExternalTokenInputSerializer(serializers.ModelSerializer):
     username = serializers.CharField(max_length=200)
-    # module_name = serializers.CharField(max_length=200)
-    # module_path = serializers.CharField(max_length=200)
+    module_name = serializers.CharField(max_length=200)
     token = serializers.CharField(max_length=200)
 
     class Meta:
@@ -14,22 +41,23 @@ class ExternalTokenInputSerializer(serializers.ModelSerializer):
         fields = [
             "id",
             "username",
-            # "module_name",
-            # "module_path",
+            "module_name",
             "token",
         ]
 
 
 class ExternalTokenSerializer(serializers.ModelSerializer):
+    # module = serializers.SlugRelatedField(
+    #     many = False,
+    #     read_only= True,
+    #     slug_field='name'
+    # )
+    module = ModuleSerializer(many=False, read_only=True)
+    user = UserSerializer(many=False, read_only=True)
+
     class Meta:
         model = ExternalToken
-        fields = ["id", "module_name", "module_path"]
-
-
-class UserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = ["id", "username", "is_staff", "is_regulator"]
+        fields = ["id", "module", "user"]
 
 
 class UserInputSerializer(serializers.ModelSerializer):

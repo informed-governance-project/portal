@@ -5,7 +5,12 @@ from drf_spectacular.views import (
     SpectacularSwaggerView,
 )
 
-from .views import ExternalTokenApiElemView, ExternalTokenApiView, UserApiView
+from .views import (
+    ExternalTokenApiElemView,
+    ExternalTokenApiView,
+    ModuleApiView,
+    UserApiView,
+)
 
 urlpatterns = [
     path("schema/", SpectacularAPIView.as_view(), name="portal"),
@@ -18,4 +23,5 @@ urlpatterns = [
     path("user/", UserApiView.as_view()),
     path("externaltoken/", ExternalTokenApiView.as_view()),
     path("externaltoken/<int:id>", ExternalTokenApiElemView.as_view()),
+    path("module/", ModuleApiView.as_view()),
 ]

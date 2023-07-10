@@ -6,20 +6,21 @@ from rest_framework.permissions import IsAdminUser, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from portal.models import ExternalToken, User
+from portal.models import ExternalToken, Module, User
 
 from .serializers import (
     ExternalTokenInputSerializer,
     ExternalTokenSerializer,
+    ModuleInputSerializer,
+    ModuleSerializer,
     UserInputSerializer,
     UserSerializer,
 )
 
+
 #
 # Model: ExternalToken
 #
-
-
 class ExternalTokenApiView(APIView):
     # add permission to check if user is authenticated
     authentication_classes = [SessionAuthentication, BasicAuthentication]
@@ -46,9 +47,14 @@ class ExternalTokenApiView(APIView):
         except User.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
 
+        try:
+            module = Module.objects.get(name=request.data["module_name"])
+        except Module.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
         new_external_token = ExternalToken.objects.create(
             user=user,
-            module__name=request.data["module_name"],
+            module=module,
             token=request.data["token"],
         )
         serializer = ExternalTokenSerializer(new_external_token)
@@ -86,8 +92,6 @@ class ExternalTokenApiElemView(GenericAPIView):
 #
 # Model: User
 #
-
-
 class UserApiView(APIView):
     # add permission to check if user is authenticated
     authentication_classes = [SessionAuthentication, BasicAuthentication]
@@ -117,4 +121,37 @@ class UserApiView(APIView):
         new_user.set_password(request.data["password"])
         new_user.save()
         serializer = UserSerializer(new_user)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+#
+# Model: Module
+#
+class ModuleApiView(APIView):
+    # add permission to check if user is authenticated
+    authentication_classes = [SessionAuthentication, BasicAuthentication]
+    permission_classes = [IsAuthenticated, IsAdminUser]
+
+    @extend_schema(request=None, responses=ModuleSerializer)
+    def get(self, request, *args, **kwargs):
+        """
+        List all the modules.
+        """
+        objects = Module.objects.all()
+        serializer = ModuleSerializer(objects, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    # Create a new object
+    @extend_schema(request=ModuleInputSerializer, responses=ModuleSerializer)
+    def post(self, request, *args, **kwargs):
+        """
+        Create a new module.
+        """
+        new_module = Module.objects.create(
+            name=request.data["name"],
+            path=request.data["path"],
+            upstream=request.data["upstream"],
+            authentication_required=request.data["authentication_required"],
+        )
+        serializer = ModuleSerializer(new_module)
         return Response(serializer.data, status=status.HTTP_200_OK)

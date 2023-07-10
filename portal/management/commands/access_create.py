@@ -21,7 +21,7 @@ class Command(BaseCommand):
         try:
             module = Module.objects.get(name=options["module_name"])
         except User.DoesNotExist:
-            return "Unknown user."
+            return "Unknown module."
 
         ExternalToken.objects.create(
             token=options["token"],
