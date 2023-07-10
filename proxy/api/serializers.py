@@ -47,11 +47,6 @@ class ExternalTokenInputSerializer(serializers.ModelSerializer):
 
 
 class ExternalTokenSerializer(serializers.ModelSerializer):
-    # module = serializers.SlugRelatedField(
-    #     many = False,
-    #     read_only= True,
-    #     slug_field='name'
-    # )
     module = ModuleSerializer(many=False, read_only=True)
     user = UserSerializer(many=False, read_only=True)
 
