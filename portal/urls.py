@@ -68,7 +68,7 @@ urlpatterns = [
 
 # Proxy views
 modules = []
-if "module" in connection.introspection.table_names():
+if "portal_module" in connection.introspection.table_names():
     try:
         modules = Module.objects.all()
     except Exception:
