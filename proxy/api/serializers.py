@@ -16,9 +16,9 @@ class ModuleSerializer(serializers.ModelSerializer):
 
 
 class ModuleInputSerializer(serializers.ModelSerializer):
-    name = serializers.CharField(max_length=200)
-    path = serializers.CharField(max_length=200)
-    upstream = serializers.CharField(max_length=200)
+    name = serializers.CharField(max_length=200, required=True)
+    path = serializers.CharField(max_length=200, required=True)
+    upstream = serializers.CharField(max_length=200, required=True)
     authentication_required = serializers.BooleanField(default=True)
 
     class Meta:
@@ -32,8 +32,8 @@ class ModuleInputSerializer(serializers.ModelSerializer):
 
 
 class ExternalTokenInputSerializer(serializers.ModelSerializer):
-    username = serializers.CharField(max_length=200)
-    module_name = serializers.CharField(max_length=200)
+    username = serializers.CharField(max_length=200, required=True)
+    module_name = serializers.CharField(max_length=200, required=True)
     token = serializers.CharField(max_length=200)
 
     class Meta:
@@ -52,7 +52,7 @@ class ExternalTokenSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ExternalToken
-        fields = ["id", "module", "user"]
+        fields = ["id", "module", "user", "token"]
 
 
 class UserInputSerializer(serializers.ModelSerializer):
