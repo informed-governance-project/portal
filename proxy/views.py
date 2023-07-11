@@ -21,5 +21,5 @@ class DefaultProxyView(ProxyView):
             # users should be blockes by the proxified module
             return headers
 
-        headers["token"] = external_token.token
+        headers["HTTP_AUTHORIZATION"] = external_token.token
         return headers
