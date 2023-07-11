@@ -43,8 +43,6 @@ try:
 
     EMAIL_HOST = config.EMAIL_HOST
     EMAIL_PORT = config.EMAIL_PORT
-
-    CLIENT_REDIRECTIONS = config.CLIENT_REDIRECTIONS
 except AttributeError as e:
     print("Please check you configuration file for the missing configuration variable:")
     print(f"  {e}")
