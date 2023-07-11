@@ -11,7 +11,7 @@ class DefaultProxyView(ProxyView):
         # print(request.user)
         headers = super().get_proxy_request_headers(request)
 
-        module_path = request.path.strip("/")
+        module_path = request.path.strip("/").split("/")[0]
         try:
             external_token = ExternalToken.objects.get(
                 user=request.user, module__path=module_path
