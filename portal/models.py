@@ -2,6 +2,8 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
+from portal.helpers import generate_token
+
 
 # define an abstract class which make the difference between operator and regulator
 class User(AbstractUser):
@@ -41,7 +43,9 @@ class Module(models.Model):
 class ExternalToken(models.Model):
     """Token class for SSO to other application/module of the SERIMA platform."""
 
-    token = models.CharField(max_length=255, unique=True)
+    token = models.CharField(
+        max_length=255, unique=True, null=False, default=generate_token
+    )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
