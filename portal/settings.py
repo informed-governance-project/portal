@@ -28,7 +28,7 @@ try:
     HASH_KEY = config.HASH_KEY
 
     # SECURITY WARNING: don't run with debug turned on in production!
-    DEBUG = config.DEBUG
+    DEBUG = True
     LOGGING = config.LOGGING
     LOG_DIRECTORY = config.LOG_DIRECTORY
 

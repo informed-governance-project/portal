@@ -52,10 +52,15 @@ class ExternalTokenApiView(APIView):
         except Module.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
 
+        try:
+            if not request.data.get("token", False):
+                del request.data["token"]
+        except Exception:
+            pass
+
         new_external_token = ExternalToken.objects.create(
             user=user,
             module=module,
-            token=request.data["token"],
         )
         serializer = ExternalTokenSerializer(new_external_token)
         return Response(serializer.data, status=status.HTTP_200_OK)
