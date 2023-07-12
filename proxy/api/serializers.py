@@ -56,11 +56,11 @@ class ExternalTokenSerializer(serializers.ModelSerializer):
 
 
 class UserInputSerializer(serializers.ModelSerializer):
-    username = serializers.CharField(max_length=200)
-    email = serializers.CharField(max_length=200)
-    is_staff = serializers.BooleanField()
-    is_regulator = serializers.BooleanField()
-    password = serializers.CharField(max_length=200)
+    username = serializers.CharField(max_length=200, required=True)
+    email = serializers.CharField(max_length=200, required=True)
+    is_staff = serializers.BooleanField(default=False)
+    is_regulator = serializers.BooleanField(default=False)
+    password = serializers.CharField(max_length=200, required=True)
 
     class Meta:
         model = User

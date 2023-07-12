@@ -57,6 +57,7 @@ class ExternalTokenApiView(APIView):
             return Response(status=status.HTTP_404_NOT_FOUND)
 
         try:
+            # token not provided or empty
             if not request.data.get("token", False):
                 del request.data["token"]
         except Exception:
@@ -118,13 +119,9 @@ class UserApiView(APIView):
         """
         Create a new user.
         """
-        new_user = User.objects.create(
-            username=request.data["username"],
-            email=request.data["email"],
-            is_regulator=request.data["is_regulator"],
-            is_staff=request.data["is_staff"],
-        )
-        new_user.set_password(request.data["password"])
+        password = request.data.pop("password")
+        new_user = User.objects.create(**request.data)
+        new_user.set_password(password)
         new_user.save()
         serializer = UserSerializer(new_user)
         return Response(serializer.data, status=status.HTTP_200_OK)
