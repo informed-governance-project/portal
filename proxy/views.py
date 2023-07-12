@@ -1,3 +1,4 @@
+from django.core.exceptions import MultipleObjectsReturned
 from revproxy.views import ProxyView
 
 from portal.models import ExternalToken
@@ -18,7 +19,9 @@ class DefaultProxyView(ProxyView):
             )
         except ExternalToken.DoesNotExist:
             # return the headers without the authentication token
-            # users should be blockes by the proxified module
+            # users should be blocked by the proxified module
+            return headers
+        except MultipleObjectsReturned:
             return headers
 
         headers["Proxy-Token"] = external_token.token
