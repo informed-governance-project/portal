@@ -44,11 +44,15 @@ class ExternalTokenApiView(APIView):
         """
         try:
             user = User.objects.get(username=request.data["username"])
+            del request.data["username"]
+            request.data["user"] = user
         except User.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
 
         try:
             module = Module.objects.get(name=request.data["module_name"])
+            del request.data["module_name"]
+            request.data["module"] = module
         except Module.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
 
@@ -58,10 +62,7 @@ class ExternalTokenApiView(APIView):
         except Exception:
             pass
 
-        new_external_token = ExternalToken.objects.create(
-            user=user,
-            module=module,
-        )
+        new_external_token = ExternalToken.objects.create(**request.data)
         serializer = ExternalTokenSerializer(new_external_token)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
