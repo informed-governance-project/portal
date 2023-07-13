@@ -88,46 +88,5 @@ class UserAdmin(ImportExportModelAdmin, admin.ModelAdmin):
                 ],
             },
         ),
-        # (
-        #     "Group Permissions",
-        #     {"classes": ("collapse",), "fields": ("groups", "user_permissions")},
-        # ),
     ]
     actions = [reset_2FA]
-
-    def get_form(self, request, obj=None, **kwargs):
-        form = super().get_form(request, obj, **kwargs)
-        return form
-
-    def get_queryset(self, request):
-        queryset = super().get_queryset(request)
-        if request.user.is_superuser:
-            return queryset
-
-        # if request.user.has_perms(
-        #     [
-        #         "portal.add_user",
-        #         "portal.change_user",
-        #         "portal.delete_user",
-        #     ],
-        # ):
-        #     return queryset.filter(
-        #         sectors__in=request.user.sectors.filter(
-        #             sectoradministration__is_sector_administrator=True
-        #         ),
-        #         companies__in=request.user.companies.all(),
-        #     ).distinct()
-        return queryset.exclude(email=request.user.email)
-
-    def save_model(self, request, obj, form, change):
-        if not request.user.is_superuser:
-            super().save_model(request, obj, form, change)
-        else:
-            if obj.id is None and obj.is_staff:
-                super().save_model(request, obj, form, change)
-                obj.user_permissions.add(
-                    Permission.objects.get(codename="add_user"),
-                    Permission.objects.get(codename="change_user"),
-                    Permission.objects.get(codename="delete_user"),
-                )
-            super().save_model(request, obj, form, change)
