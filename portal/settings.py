@@ -22,6 +22,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 
+SESSION_COOKIE_NAME = "sessionid_portal"
+
 try:
     # SECURITY WARNING: keep the secret key used in production secret!
     SECRET_KEY = config.SECRET_KEY

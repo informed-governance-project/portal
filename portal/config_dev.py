@@ -25,7 +25,6 @@ CLIENT_REDIRECTIONS = [
 SITE_NAME = "portal"
 
 SECRET_KEY = "django-insecure-1*nt5exfgm+po13ngrz7fm5sitfvi24f!13t=z*l5zz*w9zic$"
-
 HASH_KEY = b"SHP-TmGv-4z7h-1xaQp0RYuY20="
 
 DEBUG = True
