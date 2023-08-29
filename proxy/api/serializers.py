@@ -12,7 +12,7 @@ class UserSerializer(serializers.ModelSerializer):
 class ModuleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Module
-        fields = ["name", "path", "upstream", "authentication_required"]
+        fields = ["id", "name", "path", "upstream", "authentication_required"]
 
 
 class ModuleInputSerializer(serializers.ModelSerializer):

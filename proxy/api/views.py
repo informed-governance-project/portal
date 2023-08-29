@@ -158,3 +158,18 @@ class ModuleApiView(APIView):
         )
         serializer = ModuleSerializer(new_module)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class ModuleApiElemView(GenericAPIView):
+    # add permission to check if user is authenticated
+    authentication_classes = [SessionAuthentication, BasicAuthentication]
+    permission_classes = [IsAuthenticated, IsAdminUser]
+    serializer_class = ModuleSerializer
+
+    def delete(self, request, id=None):
+        """
+        Delete a module.
+        """
+        module = Module.objects.filter(id=id)
+        module.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)

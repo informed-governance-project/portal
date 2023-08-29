@@ -8,6 +8,7 @@ from drf_spectacular.views import (
 from .views import (
     ExternalTokenApiElemView,
     ExternalTokenApiView,
+    ModuleApiElemView,
     ModuleApiView,
     UserApiView,
 )
@@ -24,4 +25,5 @@ urlpatterns = [
     path("externaltoken/", ExternalTokenApiView.as_view()),
     path("externaltoken/<int:id>", ExternalTokenApiElemView.as_view()),
     path("module/", ModuleApiView.as_view()),
+    path("module/<int:id>", ModuleApiElemView.as_view()),
 ]

@@ -17,6 +17,7 @@ class DefaultProxyView(ProxyView):
             external_token = ExternalToken.objects.get(
                 user=request.user, module__path=module_path
             )
+            print(external_token.token)
         except ExternalToken.DoesNotExist:
             # return the headers without the authentication token
             # users should be blocked by the proxified module
@@ -25,4 +26,7 @@ class DefaultProxyView(ProxyView):
             return headers
 
         headers["Proxy-Token"] = external_token.token
+        headers["X-Forwarded-Prefix"] = module_path
+        headers["X-Script-Name"] = module_path
+        print(headers)
         return headers
